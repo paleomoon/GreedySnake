@@ -16,7 +16,7 @@ void StartInterface::PrintSecond()//蛇从左向右移动的过程
     for (int i = 10; i != 40; ++i) //蛇头需要从10移动到40
     {
         /*计算蛇头的下一个位置，并将其压入startsnake中，绘制出来，将蛇尾去掉*/
-        int j = ( ((i-2)%8) < 4 )?( 15 + (i-2)%8 ) : ( 21 - (i-2)%8 );
+        int j = ( ((i-2)%8) < 4 )?( 15 + (i-2)%8 ) : ( 21 - (i-2)%8 ); //控制y坐标呈现上下游动效果
         startsnake.emplace_back( Point(i, j) );
         startsnake.back().Print();
         startsnake.front().Clear();
@@ -55,7 +55,7 @@ void StartInterface::ClearText()
     {
         if (point.GetX() >= 0)
             point.Clear();
-        point.ChangePosition(point.GetX() + 1, point.GetY());
+        point.ChangePosition(point.GetX() + 1, point.GetY());//向右移动
     }
 }
 

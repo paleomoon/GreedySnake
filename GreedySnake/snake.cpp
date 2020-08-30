@@ -11,7 +11,7 @@ void Snake::InitSnake()//初始化蛇
     }
 }
 
-void Snake::Move()//蛇增长
+void Snake::Move()//蛇增长，snake尾元素为蛇头
 {
     switch (direction)
     {
@@ -34,9 +34,9 @@ void Snake::Move()//蛇增长
     snake.back().PrintCircular();
 }
 
-void Snake::NormalMove()//蛇正常移动，头增长，尾缩短
+void Snake::NormalMove()//蛇正常移动，头增长，尾缩短，形成移动效果
 {
-    Move();
+    Move(); //头增长
     snake.front().Clear();
     snake.pop_front();
 }
@@ -70,9 +70,9 @@ bool Snake::HitItself()//撞到自身
 bool Snake::ChangeDirection()//改变方向
 {
     char ch;
-    if (kbhit())//kbhit函数返回值为两个，需注意
+    if (kbhit())//检查当前是否有键盘输入，若有则返回一个非0值，否则返回0。include <conio.h>
     {
-        ch = getch();
+        ch = getch(); //getch读取方向键时，需要读取两次，第一次返回-32，第二次才是实际的值。
         switch (ch)
         {
         case -32:
